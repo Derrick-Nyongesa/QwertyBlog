@@ -11,5 +11,7 @@
 {% for post in posts%}
     <h2>{{post.title}}</h2>
     <p>{{post.post}}</p>
+    <p>Posted on ~ {{post.posted.strftime('%d-%m-%Y')}}</p>
+    <a href="/blog/{{post.id}}">See More</a>
 {% endfor%}
 {% endmacro %}
