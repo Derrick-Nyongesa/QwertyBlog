@@ -3,14 +3,14 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import User,Post
 from .. import db,photos
-from flask_login import login_required
+from flask_login import login_required,current_user
 from .forms import UpdateProfile,NewPost
 
 @main.route('/')
 def index():
     quotes = get_quotes()
-    
-    return render_template('index.html', quotes=quotes)
+    posts = Post.query.all()
+    return render_template('index.html', quotes=quotes, posts=posts, current_user=current_user)
 
 
 @main.route('/user/<uname>')
@@ -65,3 +65,9 @@ def new_post():
         db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('newPost.html', title='New Post', form=form)
+
+
+@main.route("/blog/<int:id>")
+def blog(id):
+    post = Post.query.get(id)
+    return render_template('blog.html',post=post)
