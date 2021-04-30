@@ -78,7 +78,7 @@ class Comment(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_comments(cls, post_id):
+    def get_comments(cls,id):
         comments = Comment.query.filter_by(post_id=post_id).all()
         return comments
 

@@ -1,10 +1,10 @@
 from ..requests import get_quotes
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
-from ..models import User,Post
+from ..models import User,Post,Comment
 from .. import db,photos
 from flask_login import login_required,current_user
-from .forms import UpdateProfile,NewPost
+from .forms import UpdateProfile,NewPost,CommentForm
 
 @main.route('/')
 def index():
@@ -102,3 +102,18 @@ def delete_blog(id):
     post.delete_post()
     flash("You have deleted your Blog succesfully!")
     return redirect(url_for('main.index'))
+
+
+@main.route('/blog/comments/<int:id>', methods=['Post', 'GET'])
+@login_required
+def new_comment(id):
+    form = CommentForm()
+    post = Post.query.get(id)
+    comments = Comment.query.get(id)
+    if form.validate_on_submit():
+        comment = form.comment.data
+        new_comment = Comment( comment = comment, user_id = current_user.id, pitch_id = id)
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('main.blog', id=post.id))
+    return render_template('new_comment.html', comment_form=form, title='New Comment',comments=comments , post = post)
