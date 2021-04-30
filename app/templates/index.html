@@ -4,6 +4,7 @@
 {% block content %}
 <h1>{{macro.display_quotes(quotes)}}</h1>
 
+<p class="lead">Subscribe to receive email notifications whenever a blog has been added</p>
 <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
     <div class="md-form form-group">
         <label class="white-color">Email Address...</label>

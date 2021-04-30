@@ -11,7 +11,7 @@ from ..email import mail_message
 def index():
     quotes = get_quotes()
     posts = Post.query.all()
-    return render_template('index.html', quotes=quotes, posts=posts, current_user=current_user)
+    return render_template('index.html', quotes=quotes, posts=posts, current_user=current_user, title = 'Home')
 
 
 @main.route('/user/<uname>')
@@ -76,7 +76,7 @@ def new_post():
 def blog(id):
     post = Post.query.get(id)
     comments = Comment.query.filter_by(post_id=id).all()
-    return render_template('blog.html',post=post,comments=comments)
+    return render_template('blog.html',post=post,comments=comments, title = 'Blog')
 
 
 @main.route("/blog/<int:id>/update", methods=['GET', 'POST'])
