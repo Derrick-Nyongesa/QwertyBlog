@@ -10,6 +10,8 @@
 <a href="{{ url_for('main.update_blog', id=post.id) }}">Update</a>
 <a href="{{ url_for('main.delete_blog', id=post.id) }}">Delete</a>
 {% endif %}
+<a href="{{ url_for('main.new_comment', id=post.id) }}">Comment</a>
 
+<h2>Comments</h2>
 {{macro.display_comments(comments)}}
 {% endblock %}
