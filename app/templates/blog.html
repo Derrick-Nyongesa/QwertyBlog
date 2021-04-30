@@ -2,16 +2,29 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
-<p>A Blog Post by {{post.user.username}} on {{post.posted.strftime('%d-%m-%Y')}}</p>
-<h2>{{post.title}}</h2>
-<p>{{post.post}}</p>
+<div class=" row" >   
+    <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <p>A Blog Post by {{post.user.username}} on {{post.posted.strftime('%d-%m-%Y')}}</p>
+            <h2>{{post.title}}</h2>
+            <p>{{post.post}}</p>
 
-{% if post.user == current_user %}
-<a href="{{ url_for('main.update_blog', id=post.id) }}">Update</a>
-<a href="{{ url_for('main.delete_blog', id=post.id) }}">Delete</a>
-{% endif %}
-<a href="{{ url_for('main.new_comment', id=post.id) }}">Comment</a>
+        {% if post.user == current_user %}
+            <a href="{{ url_for('main.update_blog', id=post.id) }}">Update</a>
+            <a href="{{ url_for('main.delete_blog', id=post.id) }}">Delete</a>
+        {% endif %}
+            <a href="{{ url_for('main.new_comment', id=post.id) }}">Comment</a>
+        </div>
+    <div class="col-md-2"></div>
+</div>
 
-<h2>Comments</h2>
-{{macro.display_comments(comments)}}
+<div class=" row" >        
+    <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2>Comments</h2>
+                {{macro.display_comments(comments)}}
+        </div>
+    <div class="col-md-2"></div>
+</div>
+
 {% endblock %}
