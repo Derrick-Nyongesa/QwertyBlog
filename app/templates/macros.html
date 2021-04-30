@@ -15,3 +15,11 @@
     <a href="/blog/{{post.id}}">See More</a>
 {% endfor%}
 {% endmacro %}
+
+
+{% macro display_comments(comments) %}
+{% for comment in comments %}
+    <h3>Comment by: {{ comment.user.username }}</h3>
+    <p>Comment: {{comment.comment}}</p>
+{% endfor%}
+{% endmacro %}

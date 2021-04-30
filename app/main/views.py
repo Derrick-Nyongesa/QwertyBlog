@@ -71,7 +71,8 @@ def new_post():
 @main.route("/blog/<int:id>")
 def blog(id):
     post = Post.query.get(id)
-    return render_template('blog.html',post=post)
+    comments = Comment.query.filter_by(post_id=id).all()
+    return render_template('blog.html',post=post,comments=comments)
 
 
 @main.route("/blog/<int:id>/update", methods=['GET', 'POST'])
@@ -112,7 +113,7 @@ def new_comment(id):
     comments = Comment.query.get(id)
     if form.validate_on_submit():
         comment = form.comment.data
-        new_comment = Comment( comment = comment, user_id = current_user.id, pitch_id = id)
+        new_comment = Comment( comment = comment, user_id = current_user.id, post_id = id)
         db.session.add(new_comment)
         db.session.commit()
         return redirect(url_for('main.blog', id=post.id))

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
 {% block content %}
 <p>A Blog Post by {{post.user.username}} on {{post.posted.strftime('%d-%m-%Y')}}</p>
@@ -9,4 +10,6 @@
 <a href="{{ url_for('main.update_blog', id=post.id) }}">Update</a>
 <a href="{{ url_for('main.delete_blog', id=post.id) }}">Delete</a>
 {% endif %}
+
+{{macro.display_comments(comments)}}
 {% endblock %}
