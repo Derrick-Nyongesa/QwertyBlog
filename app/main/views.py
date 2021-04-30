@@ -1,10 +1,10 @@
 from ..requests import get_quotes
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User
+from ..models import User,Post
 from .. import db,photos
 from flask_login import login_required
-from .forms import UpdateProfile
+from .forms import UpdateProfile,NewPost
 
 @main.route('/')
 def index():
@@ -53,3 +53,15 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/new_post', methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = NewPost()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, post=form.content.data, user_id = current_user.id)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('newPost.html', title='New Post', form=form)
