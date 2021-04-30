@@ -90,3 +90,14 @@ def update_blog(id):
         form.title.data = post.title
         form.content.data = post.post
     return render_template('newPost.html', title='Update Post', form=form)
+
+
+@main.route("/blog/<int:id>/delete", methods=['GET'])
+@login_required
+def delete_blog(id):
+    post = Post.query.get(id)
+    if post.user != current_user:
+        abort(403)
+    post.delete_post()
+    flash("You have deleted your Blog succesfully!")
+    return redirect(url_for('main.index'))
