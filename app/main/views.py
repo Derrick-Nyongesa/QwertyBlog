@@ -132,3 +132,5 @@ def subscribe():
     mail_message("Subscribed to QwertyBlog","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
     flash('Sucessfuly subscribed')
     return redirect(url_for('main.index'))
+
+

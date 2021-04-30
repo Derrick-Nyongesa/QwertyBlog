@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
+from sqlalchemy import desc
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -55,9 +56,9 @@ class Post(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    
     def get_post(id):
-        post = Post.query.filter_by(id=id).first()
-
+        post = Post.query.filter_by(id=id).order_by(desc('posted')).all()
         return post
 
     def __repr__(self):
