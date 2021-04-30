@@ -1,7 +1,7 @@
 {% macro display_quotes(quotes)%}
 <div class="jumbotron">
-    <h1 class="text-danger">Random Quote</h1>
-    <p class="text-danger">{{quotes.quote}}</p>
+    <h1 class="text-header">Random Quote</h1>
+    <p class="text">{{quotes.quote}}</p>
     <p>~ <span class="highlight">{{quotes.author}}</span></p>
 </div>
 {% endmacro %}
@@ -9,10 +9,13 @@
 
 {% macro display_posts(posts)%}
 {% for post in posts%}
-    <h2>{{post.title}}</h2>
+<div id="posts">
+    <h2> <span class="highlight">{{post.title}}</span></h2>
     <p>{{post.post}}</p>
     <p>Posted on ~ {{post.posted.strftime('%d-%m-%Y')}}</p>
-    <a href="/blog/{{post.id}}">See More</a>
+    <a class="btn btn-info" href="/blog/{{post.id}}">See More</a>
+</div>
+    
 {% endfor%}
 {% endmacro %}
 

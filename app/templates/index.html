@@ -7,32 +7,31 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{macro.display_quotes(quotes)}}</h1>
+<section id="showcase">
+    <div class="container">
+        <h1>{{macro.display_quotes(quotes)}}</h1>
+    </div>
+</section>
 
-<div class=" row" >        
-    <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <p class="lead">Subscribe to receive email notifications whenever a blog has been added</p>
-            <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
-                <div class="md-form form-group">
-                    <label class="white-color">Email Address...</label>
-                    <input type="email"  class="form-control " name ="subscriber" required>
-                </div>
-                <div class="md-form form-group">
-                    <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
-                </div>
-          </form>
-        </div>
-    <div class="col-md-2"></div>
-</div>
 
-<div class=" row" >        
-    <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <a href="/new_post">New Post</a>
+
+<section id="newsletter">
+    <div class="container">
+        <h4>Subscribe to receive email notifications whenever a blog has been added</h4>
+        <form action="{{url_for('main.subscribe')}}" method="POST">
+                <input  type="email" name ="subscriber" placeholder="Enter your Email" required>
+                <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
+      </form>
+    </div>
+</section>
+
+
+
+
+        <div class="post-link">
+            <a class="btn btn-success" href="/new_post">New Post</a>
         </div>
-    <div class="col-md-2"></div>
-</div>
+    
 
     
 
