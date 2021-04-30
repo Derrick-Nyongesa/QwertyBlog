@@ -1,5 +1,6 @@
 body{
     background: #e63946;
+    font-size: 16px;
 }
 
 #newsletter{
@@ -17,11 +18,7 @@ body{
     margin-top: 15px;
 }
 
-input{
-    padding: 4px;
-    height: 25px;
-    width: 250px;
-}
+
 
 #newsletter button{
     height: 28px;
@@ -62,10 +59,15 @@ input{
     font-weight: bold;
 }
 
-#posts{
+.posts{
     padding: 20px;
     border: #ccc solid 1px;
     margin-bottom: 25px;
     background-color:#faa307;
     border-radius: 10px;
+}
+
+.name{
+    color: #118ab2;
+    font-weight: bold;
 }

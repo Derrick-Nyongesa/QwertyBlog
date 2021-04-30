@@ -1,4 +1,4 @@
-Hello {{user.username}}
+Hello!
 
 Thank you for subscribing to QwertyBlog!
 You will be receiving notifications everytime a new blog is posted.

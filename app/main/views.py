@@ -68,8 +68,8 @@ def new_post():
         db.session.commit()
         for subscriber in subscribers:
             mail_message("New Blog Post","email/new_blog",subscriber.email,post=post)
-        flash('You Posted a new Blog')
         return redirect(url_for('main.index'))
+        
     return render_template('newPost.html', title='New Post', form=form)
 
 

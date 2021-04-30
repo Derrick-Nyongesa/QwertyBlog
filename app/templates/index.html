@@ -13,14 +13,20 @@
     </div>
 </section>
 
-
+{% for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+      {% endfor %}
 
 <section id="newsletter">
     <div class="container">
         <h4>Subscribe to receive email notifications whenever a blog has been added</h4>
         <form action="{{url_for('main.subscribe')}}" method="POST">
-                <input  type="email" name ="subscriber" placeholder="Enter your Email" required>
-                <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
+            <input type="email"  class="form-control" placeholder="Enter your Email" name ="subscriber" required>
+            <br>
+            <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
       </form>
     </div>
 </section>

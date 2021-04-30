@@ -9,7 +9,7 @@
 
 {% macro display_posts(posts)%}
 {% for post in posts%}
-<div id="posts">
+<div class="posts">
     <h2> <span class="highlight">{{post.title}}</span></h2>
     <p>{{post.post}}</p>
     <p>Posted on ~ {{post.posted.strftime('%d-%m-%Y')}}</p>
@@ -22,7 +22,10 @@
 
 {% macro display_comments(comments) %}
 {% for comment in comments %}
-    <h3>Posted by ~ {{ comment.user.username }}</h3>
+<div class="posts">
+    <p>A comment from  <span class="name">{{ comment.user.username }}</span></p>
     <p>{{comment.comment}}</p>
+</div>
+    
 {% endfor%}
 {% endmacro %}
