@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>A Blog Post by {{post.user.username}}</p>
+<p>A Blog Post by {{post.user.username}} on {{post.posted.strftime('%d-%m-%Y')}}</p>
 <h2>{{post.title}}</h2>
 <p>{{post.post}}</p>
+
+{% if post.user == current_user %}
+<a href="{{ url_for('main.update_blog', id=post.id) }}">Update</a>
+<a href="{{ url_for('main.delete_blog', id=post.id) }}">Delete</a>
+{% endif %}
 {% endblock %}

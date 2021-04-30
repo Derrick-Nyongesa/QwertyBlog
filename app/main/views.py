@@ -63,6 +63,7 @@ def new_post():
         post = Post(title=form.title.data, post=form.content.data, user_id = current_user.id)
         db.session.add(post)
         db.session.commit()
+        flash('You Posted a new Blog')
         return redirect(url_for('main.index'))
     return render_template('newPost.html', title='New Post', form=form)
 
