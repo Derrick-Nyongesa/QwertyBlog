@@ -6,11 +6,12 @@ from .. import db,photos
 from flask_login import login_required,current_user
 from .forms import UpdateProfile,NewPost,CommentForm
 from ..email import mail_message
+from sqlalchemy import desc
 
 @main.route('/')
 def index():
     quotes = get_quotes()
-    posts = Post.query.all()
+    posts = Post.all_posts()
     return render_template('index.html', quotes=quotes, posts=posts, current_user=current_user, title = 'Home')
 
 

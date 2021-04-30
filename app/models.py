@@ -56,9 +56,14 @@ class Post(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    
+    @classmethod
     def get_post(id):
         post = Post.query.filter_by(id=id).order_by(desc('posted')).all()
+        return post
+
+    @classmethod
+    def all_posts(cls):
+        post = Post.query.order_by(desc('posted')).all()
         return post
 
     def __repr__(self):
