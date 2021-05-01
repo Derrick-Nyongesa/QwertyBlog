@@ -39,7 +39,7 @@ git clone https://github.com/Derrick-Nyongesa/QwertyBlog.git
 
 
 ## Link to live site on GitHub Pages
-
+[Derrick Nyongesa https://qwertyblog.herokuapp.com/](https://qwertyblog.herokuapp.com/)
 
 
 ## Entity relationship diagram 
