@@ -6,11 +6,11 @@ body{
 #newsletter{
     background-color: #1d3557;
     padding: 10px;
-    color: white;
 }
 
 #newsletter h4{
     float: left;
+    color: white;
 }
 
 #newsletter form{
