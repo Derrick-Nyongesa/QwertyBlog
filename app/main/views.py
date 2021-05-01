@@ -135,3 +135,23 @@ def subscribe():
     return redirect(url_for('main.index'))
 
 
+@main.route('/review/<int:id>')
+def single_comment(id):
+    comment=Comment.query.get(id)
+    post = Post.query.get(id)
+    if comment is None:
+        abort(404)
+    
+    return render_template('comment.html',comment = comment)
+
+
+@main.route("/comment/<int:id>/delete", methods=['GET'])
+@login_required
+def delete_comment(id):
+    comment=Comment.query.get(id)
+    post = Post.query.get(id)
+    comment.delete_comment()
+    flash('Comment has been deleted')
+    return redirect(url_for('main.index'))
+
+
